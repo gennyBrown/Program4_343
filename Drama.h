@@ -4,12 +4,12 @@
 
 using namespace std;
 
-class Drama::public Movie{
+class Drama:public Movie{
 
 public:
 	Drama();		//default constructor
 	//constructor with parameters for use in the factory
-	void Drama(string director, string title, char type, int quantity, int year);
+	Drama(string director, string title, char type, int quantity, int year);
 	~Drama();		//destructor
 
 	virtual void setYear(int year);	//sets the release year of the movie

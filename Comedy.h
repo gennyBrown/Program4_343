@@ -3,7 +3,7 @@
 #include "Movie.h"
 using namespace std;
 
-class Comedy:: public Movie {
+class Comedy:public Movie {
 
 public:
 	Comedy();	//default constructor
