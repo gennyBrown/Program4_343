@@ -16,6 +16,7 @@ public:
 
 protected:
 	vector <BST<Movies>> trees;
+	
 	BST comedies;	//stores comedies
 	BST dramas;		//stores dramas
 	BST classics;	//stores classics
