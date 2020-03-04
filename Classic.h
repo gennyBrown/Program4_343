@@ -1,8 +1,12 @@
+#ifndef CLASSSIC_H
 #define CLASSIC_H
-#ifdef CLASSIC_H
+//#ifdef CLASSIC_H
 #include "Movie.h"
 
 using namespace std;
+
+//class Movie{};
+
 
 class Classic:public Movie {
 
