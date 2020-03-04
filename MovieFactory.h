@@ -11,6 +11,8 @@ public:
 
 	void storeMovie(ifstream& input);
 	bool makeMovie(char movieType);
+
+	char movieType;
 };
 
 #endif
