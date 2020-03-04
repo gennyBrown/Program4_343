@@ -9,7 +9,7 @@ class Drama:public Movie{
 public:
 	Drama();		//default constructor
 	//constructor with parameters for use in the factory
-	Drama(string director, string title, char type, int quantity, int year);
+	Drama(char type, int quantity, string director, string title, int year);
 	~Drama();		//destructor
 
 	virtual void setYear(int year);	//sets the release year of the movie

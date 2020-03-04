@@ -9,8 +9,8 @@ class Classic:public Movie {
 public:
 	Classic();	//default constructor 
 	//constructor with parameters for use in the factory
-	Classic(string director, string title, char type, int quantity,
-		string releaseDate, string actor);
+	Classic(char type, int quantity, string director, string title,
+		string actor,string releaseDate);
 	virtual ~Classic();		//destructor
 
 		//sets the release date of the movie

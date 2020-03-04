@@ -28,6 +28,7 @@ class Movie {
 public:
 	Movie();	//constructor
 	Movie(string director, string title, char movieType, int quantity, int year); //constructor
+	Movie(string director, string title, char movieType, int quantity, int year, string actor); //constructor for classic movies
 	virtual ~Movie();	//destructor
 
 	virtual void setDirector(string name);	//sets the name of the director
@@ -40,11 +41,15 @@ public:
 	virtual int getQuantity();	//returns quantity
 
 	virtual void setMovieType(char type);	//sets the movie type
-	virtual char getMovieType() const;	//virtual function to return movie type 
-	// Took out =0... add back after the rest of classes are implemented
 
-	virtual void setYear(int year); //sets the movie year
-	virtual int getYear();    // returns the movie year
+	virtual char getMovieType();	//virtual function to return movie type, removed = 0
+
+	virtual void setActor(string actor); //sets actor for classic movies
+	virtual string getActor(); //returns the actors
+
+
+	virtual void setYear(int year); //set year
+	virtual int getYear(); // returns year
 
 
 protected:
@@ -53,6 +58,7 @@ protected:
 	char type;		//holds the movie type
 	int quantity;		//holds the quantity of the movie
 	int year;		// hold year movie was released
+	string actor;  //holds the actor for classic movies
 };
 
 #endif
