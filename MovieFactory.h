@@ -1,5 +1,5 @@
+#ifndef MOVIE_FACTORY_H
 #define MOVIE_FACTORY_H
-#ifdef MOVIE_FACTORY_H
 #include <fstream>
 
 #include "Movie.h"

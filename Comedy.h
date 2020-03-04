@@ -1,8 +1,9 @@
+#ifndef COMEDY_H
 #define COMEDY_H
-#ifdef COMEDY_H
 #include "Movie.h"
-//#include "MovieFactory.h"
 using namespace std;
+
+//class Movie{};
 
 class Comedy:public Movie {
 

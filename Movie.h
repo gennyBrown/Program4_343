@@ -1,24 +1,24 @@
 /// ------------------------------------------------ Movie.h -------------------------------------------------------
-
+//
 // Steven Bollman CSS 343 C
-
+//
 // Creation Date - 3/3/2020
-
+//
 // Date of Last Modification - 3/3/2020
-
+//
 // --------------------------------------------------------------------------------------------------------------------
-
+//
 // Purpose - This is the header file for the Movie class, and outlines constructors, getters and setters for director,
 //title, quantity, movieType, and year.
 // --------------------------------------------------------------------------------------------------------------------
-
+//
 // --------------------------------------------------------------------------------------------------------------------
 
 
 
-
+#ifndef MOVIE_H
 #define MOVIE_H
-#ifdef MOVIE_H
+
 #include <string>
 
 using namespace std;
@@ -60,5 +60,4 @@ protected:
 	int year;		// hold year movie was released
 	string actor;  //holds the actor for classic movies
 };
-
 #endif
