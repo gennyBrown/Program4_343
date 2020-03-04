@@ -1,9 +1,19 @@
+// ---------------------------------- MovieFactory.cpp -----------------------
+
+// Genny Brown CSS 343
+
+// 03/02/2020
+
+// 02/15/2020
+
+// ----------------------------------------------------------------------------
+
 // this file implements the movie factory
 
 // ----------------------------------------------------------------------------
 #include <iostream>
 #include <string>
-
+#include "Movie.h"
 #include "MovieFactory.h"
 
 // ----------------------storeMovie(ifstream& input)-----------------------
@@ -21,14 +31,14 @@ bool MovieFactory::storeMovie(ifstream& input)
 	while (!input.eof()) {	//checks to see if at end of file
 		input >> movieType;			//reads movie type
 		if (movieType == 'F') {		//if comedy
-
+			
 			getline(input, quantity, ',');	//reads inventory
 			getline(input, director, ',');	//reads director
 			getline(input, title, ',');	//reads title
 			getline(input, year, ',');	//reads release year
 			inventory = stoi(quantity);	//converts from string to int
 			releaseYear = stoi(year);	//converts from string to int
-
+			
 			makeMovie('F');		//creates the comedy object
 			return true;
 		}
@@ -39,7 +49,7 @@ bool MovieFactory::storeMovie(ifstream& input)
 			getline(input, year, ',');	//reads release year
 			inventory = stoi(quantity);	//converts from string to int
 			releaseYear = stoi(year);	//converts from string to int
-
+			
 			makeMovie('D');	//creates the drama object
 			return true;
 		}
@@ -51,14 +61,13 @@ bool MovieFactory::storeMovie(ifstream& input)
 			getline(input, year, ',');	//reads release year
 			inventory = stoi(quantity);	//converts from string to int
 			releaseYear = stoi(year);	//converts from string to int
-
+			
 			makeMovie('C');		//creates the classic object
 			return true;
 		}
 		else {	//if incorrect formatting
 			cout << "Incorrect input formatting" << endl;
 			return false;
-		
 		}
 	}//end while loop
 }
