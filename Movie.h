@@ -20,7 +20,13 @@ public:
 	virtual int getQuantity();	//returns quantity
 
 	virtual void setMovieType(char type);	//sets the movie type
-	virtual char getMovieType() const = 0;	//virtual function to return movie type
+	virtual char getMovieType();	//virtual function to return movie type, removed = 0
+
+	virtual void setActor(string actor);
+	virtual string setActor();
+
+	virtual void setYear(int year);
+	virtual int getYear();
 
 protected:
 	string director;	//holds the movie director
