@@ -29,12 +29,23 @@ using namespace std;
 
      }	//destructor
 
-    Movie::Movie(string director, string title, char movieType, int quantity, int year){
-        director=director;
-        title=title;
-        movieType=movieType;
-        quantity=quantity;
-        year = year;
+    Movie::Movie(string mDirector, string mTitle, char mMovieType, int mQuantity, int mYear){
+        mDirector=director;
+        mTitle=title;
+        mMovieType=type;
+        mQuantity=quantity;
+        mYear = year;
+    }
+
+    Movie::Movie(string mDirector, string mTitle, char mMovieType, int mQuantity, int mYear, string mActor ) {
+        mDirector = director;
+        mTitle = title;
+        mMovieType = type;
+        mQuantity = quantity;
+        mYear = year;
+        mActor = actor;
+        
+
     }
 
 	 void Movie::setDirector(string name){

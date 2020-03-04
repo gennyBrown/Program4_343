@@ -2,13 +2,17 @@
 
 #include <iostream>
 #include "Movie.h"
+#include "Classic.h"
 
 using namespace std;
 
 int main() {
+    Classic aClassic;
+
+    aClassic.setReleaseDate("JULY2020");
+    aClassic.getReleaseDate();
 
    Movie amovie;
-   
    amovie.setDirector("Steven");
    cout << amovie.getDirector() << endl;
 

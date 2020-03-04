@@ -42,7 +42,7 @@ public:
 
 	virtual void setMovieType(char type);	//sets the movie type
 
-	virtual char getMovieType();	//virtual function to return movie type, removed = 0
+	virtual char getMovieType() const;	//virtual function to return movie type, removed = 0
 
 	virtual void setActor(string actor); //sets actor for classic movies
 	virtual string getActor(); //returns the actors

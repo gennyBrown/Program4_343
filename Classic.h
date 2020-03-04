@@ -18,7 +18,7 @@ public:
 	virtual string getReleaseDate();		//returns the release date of the movie
 
 	virtual void setActor(string name);	//sets the actor of the movie
-	virtual string getActor(string name);	//returns the actor of the movie
+	virtual string getActor();	//returns the actor of the movie
 	virtual char getMovieType();	//returns the movie type
 
 protected:
