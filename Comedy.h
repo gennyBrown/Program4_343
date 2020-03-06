@@ -19,6 +19,8 @@ public:
 
 	virtual char getMovieType();	//returns the movie type
 
+
+
 protected:
 	int year;	//holds the release year of the movie
 };

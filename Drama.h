@@ -1,13 +1,14 @@
 #ifndef DRAMA_H
 #define DRAMA_H
 //#ifdef DRAMA_H
+
 #include "Movie.h"
 
 using namespace std;
 
 //class Movie {};
 
-class Drama:public Movie{
+class Drama : public Movie{
 
 public:
 	Drama();		//default constructor

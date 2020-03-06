@@ -6,13 +6,13 @@ Comedy::Comedy()
 
 }
 
-Comedy::Comedy(char type, int quantity, string director, string title, int year)
+Comedy::Comedy(char thisType, int thisQuantity, string thisDirector, string thisTitle, int thisYear)
 {
-	type = type;
-	quantity = quantity;
-	director = director;
-	title = title;
-	year = year;
+	thisType = type;
+	thisQuantity = quantity;
+	thisDirector = director;
+	thisTitle = title;
+	thisYear = year;
 }
 
 Comedy::~Comedy()

@@ -1,5 +1,8 @@
 #define NODEDATA_H
 #ifdef NODEDATA_H
+
+#include<ostream>
+#include "Movie.h"
 using namespace std;
 
 class NodeData {

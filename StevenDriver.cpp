@@ -1,13 +1,15 @@
 
 
 #include <iostream>
-#include "Movie.h"
 #include "Classic.h"
-
+#include "Drama.h"
 using namespace std;
 
 int main() {
     Classic aClassic;
+
+    Drama aDrama;
+
 
     aClassic.setReleaseDate("JULY2020");
     aClassic.getReleaseDate();

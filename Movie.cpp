@@ -20,6 +20,7 @@
 #include <iostream>
 #include "Movie.h"
 
+
 using namespace std;
 
     Movie::Movie() {
@@ -91,5 +92,12 @@ using namespace std;
 
      int Movie::getYear() { //returns movie year
          return year;
+     }
+
+     void Movie::setActor(string thisActor) {  //sets actor for classic movies
+         thisActor = actor;
+     }
+     string Movie::getActor() { //returns the actors
+         return actor;
      }
 

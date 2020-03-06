@@ -1,7 +1,8 @@
 #define MOVIE_DATABASE_H
 #ifdef MOVIE_DATABASE_H
-#include "BST.h"
+#include "NodeData.h"
 #include "Movie.h"
+#include "MovieBST.h"
 #include <vector>
 
 using namespace std;
@@ -9,17 +10,19 @@ using namespace std;
 class MovieDatabase {
 
 public:
+
+	MovieDatabase(); // constructor
 	~MovieDatabase();		//destructor
-	BST getComedies();	//gets the BST for comedies
-	BST getDramas();	//gets the BST for dramas
-	BST getClassics();	//gets the BST for classics
+	MovieBST getComedies();	//gets the BST for comedies
+	MovieBST getDramas();	//gets the BST for dramas
+	MovieBST getClassics();	//gets the BST for classics
 
 protected:
-	vector <BST<Movies>> trees;
+	vector <vector<MovieBST>> trees;
 	
-	BST comedies;	//stores comedies
-	BST dramas;		//stores dramas
-	BST classics;	//stores classics
+	MovieBST comedies;	//stores comedies
+	MovieBST dramas;		//stores dramas
+	MovieBST classics;	//stores classics
 };
 
 #endif

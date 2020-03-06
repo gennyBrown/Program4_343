@@ -13,13 +13,12 @@
 // ----------------------------------------------------------------------------
 #include <iostream>
 #include <string>
-#include "Movie.h"
 #include "MovieFactory.h"
 
 // ----------------------storeMovie(ifstream& input)-----------------------
 //
 // Description
-//	reads from the file and calls the helper function to create the movie objects
+// reads from the file and calls the helper function to create the movie objects
 //
 // preconditions: there is a valid file to be read from
 // 
@@ -39,9 +38,10 @@ bool MovieFactory::storeMovie(ifstream& input)
 			inventory = stoi(quantity);	//converts from string to int
 			releaseYear = stoi(year);	//converts from string to int
 			
-			makeMovie('F');		//creates the comedy object
+			//makeMovie('F');		//creates the comedy object
 			return true;
 		}
+
 		else if (movieType == 'D') {	//if drama
 			getline(input, quantity, ',');	//reads inventory
 			getline(input, director, ',');	//reads director
@@ -50,9 +50,10 @@ bool MovieFactory::storeMovie(ifstream& input)
 			inventory = stoi(quantity);	//converts from string to int
 			releaseYear = stoi(year);	//converts from string to int
 			
-			makeMovie('D');	//creates the drama object
+			//makeMovie('D');	//creates the drama object
 			return true;
 		}
+
 		else if (movieType == 'C') {	//if classic
 			getline(input, quantity, ',');	//reads inventory
 			getline(input, director, ',');	//reads director
@@ -62,9 +63,10 @@ bool MovieFactory::storeMovie(ifstream& input)
 			inventory = stoi(quantity);	//converts from string to int
 			releaseYear = stoi(year);	//converts from string to int
 			
-			makeMovie('C');		//creates the classic object
+			//makeMovie('C');		//creates the classic object
 			return true;
 		}
+
 		else {	//if incorrect formatting
 			cout << "Incorrect input formatting" << endl;
 			return false;
@@ -96,6 +98,7 @@ Movie* MovieFactory::makeMovie(char movieType)
 		return comedy;
 			 
 	}
+
 	else if (movieType == 'D') {	//if drama
 		Movie* drama = new Drama();		//creates new drama object
 		drama->setDirector(director);	//sets director
@@ -106,6 +109,7 @@ Movie* MovieFactory::makeMovie(char movieType)
 		drama->setYear(releaseYear); //sets year
 		return drama;
 	}
+
 	else if(movieType == 'C') {	//if classic
 		Movie* classic = new Classic();	//creates classic object
 		classic->setActor(actor);	//sets actor
