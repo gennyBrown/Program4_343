@@ -34,7 +34,7 @@ public:
 
 	void makeEmpty();	//clears the tree
 
-	bool insert(Movie);	//adds new nodes to the tree
+	bool insert(Movie&);	//adds new nodes to the tree
 
 	bool retrieve(const Movie&, Movie*&) const;	 	//gets given node
 
@@ -51,7 +51,7 @@ public:
 
 	void helpMakeEmpty(Node*&);	//makeEmpty helper
 
-	bool helpInsert(Node*&, Movie); //helper function for Movie 
+	bool helpInsert(Node*&, Movie&); //helper function for Movie 
 
 	bool insertComedy(Node*&, Movie*);	//inserts new Comedy into tree
 

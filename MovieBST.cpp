@@ -37,7 +37,7 @@ void MovieBST::helpMakeEmpty(Node*& root) //removes node
 // Preconditions: "this" BinTree must exist
 // Postconditions: inserts new data in the correct place
 //-------------------------------------------------------------------------------------
-bool MovieBST::insert(Movie newData) {
+bool MovieBST::insert(Movie& newData) {
 	return helpInsert(this->root, newData);
 }
 
@@ -47,7 +47,7 @@ bool MovieBST::insert(Movie newData) {
 // Helper function to insert
 // If NodeData is already in BSTree then node is not inserted
 // --------------------------------------------------------------
-bool MovieBST::helpInsert(Node*& thisNode, Movie newData) {
+bool MovieBST::helpInsert(Node*& thisNode, Movie& newData) {
 	if (thisNode == NULL) {
 		thisNode = new Node;
 		thisNode->data = newData;
