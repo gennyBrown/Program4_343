@@ -2,6 +2,7 @@
 #define COMEDY_BST_H
 #include "MovieBST.h"
 #include "ComedyBST.h"
+#include "Comedy.h"
 using namespace std;
 
 class ComedyBST : public MovieBST {

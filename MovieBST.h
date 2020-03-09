@@ -10,7 +10,7 @@ using namespace std;
 
 
 
-class MovieBST {
+class MovieBST : public Movie {
 
 
 
@@ -18,13 +18,15 @@ public:
 
 	struct Node {
 
-		Movie* data;
+		Movie data;
 
 		Node* left;
 
 		Node* right;
 
+
 	};
+
 
 	MovieBST();
 
@@ -32,7 +34,7 @@ public:
 
 	void makeEmpty();	//clears the tree
 
-	bool insert(Movie*);	//adds new nodes to the tree
+	bool insert(Movie);	//adds new nodes to the tree
 
 	bool retrieve(const Movie&, Movie*&) const;	 	//gets given node
 
@@ -40,7 +42,6 @@ public:
 
 
 
-private:
 
 
 
@@ -48,7 +49,9 @@ private:
 
 
 
-	void makeEmpty(Node*&);	//makeEmpty helper
+	void helpMakeEmpty(Node*&);	//makeEmpty helper
+
+	bool helpInsert(Node*&, Movie); //helper function for Movie 
 
 	bool insertComedy(Node*&, Movie*);	//inserts new Comedy into tree
 
@@ -59,6 +62,9 @@ private:
 	void retrieve(Node*, const Movie&, Movie*&) const;	//retrieve helper
 
 };
+
+
+
 
 
 

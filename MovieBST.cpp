@@ -1,6 +1,9 @@
 #include "MovieBST.h"
+#include <iostream>
 
 using namespace std;
+
+
 
 MovieBST::MovieBST()
 {
@@ -9,37 +12,89 @@ MovieBST::MovieBST()
 
 MovieBST::~MovieBST()
 {
-	makeEmpty(root);		//calls recuresive helper
+	//makeEmpty();		//calls recuresive helper
 }
+
 
 void MovieBST::makeEmpty()
 {
-	makeEmpty(root);	//calls helper
+	helpMakeEmpty(root);	//calls helper
 	root = nullptr;		//sets root to null
 }
 
-void MovieBST::makeEmpty(Node*&)
+void MovieBST::helpMakeEmpty(Node*&) //removes node
 {
 	if (root) {		//checks for root
-		makeEmpty(root->left);	//goes left
-		makeEmpty(root->right);	//goes right
+		helpMakeEmpty(root->left);	//goes left
+		helpMakeEmpty(root->right);	//goes right
 		delete root;	//delete node
 	}
-
+	
 }
 
-bool MovieBST::insert(Movie*)
+//------------------------- insert(NodeData* newData) ---------------------------------
+//inserts a new node into the BinTree
+// Preconditions: "this" BinTree must exist
+// Postconditions: inserts new data in the correct place
+//-------------------------------------------------------------------------------------
+bool MovieBST::insert(Movie newData) {
+	return helpInsert(this->root, newData);
+}
+
+
+
+// --------------------- insertHelper -----------------------------------------
+// Helper function to insert
+// If NodeData is already in BSTree then node is not inserted
+// --------------------------------------------------------------
+bool MovieBST::helpInsert(Node*& thisNode, Movie newData) {
+	if (thisNode == NULL) {
+		thisNode = new Node;
+		thisNode->data = newData;
+		thisNode->left = NULL;
+		thisNode->right = NULL;
+	}
+
+
+	else if (newData < thisNode->data)
+
+	{
+		helpInsert(thisNode->left, newData);  // traverse left
+	}
+	else if (newData >  thisNode->data)
+
+	{
+		helpInsert(thisNode->right, newData); // traverse right
+	}
+	else
+
+	{
+		return false;   // Node Data already exists
+	}
+
+	return true;    //Node inserted successfully
+}
+
+
+
+bool MovieBST::retrieve(const Movie&, Movie*&) const
 {
 	return false;
 }
 
-bool MovieBST::retrieve(const Movie&, Movie*&) const
+void MovieBST::printTree(Node*& movieNode) const
 {
+	if (movieNode == NULL)
+		return;
 
-}
+	/* first recur on left child */
+	printTree(movieNode->left);
 
-void MovieBST::printTree(Node*&) const
-{
+	/* then print the data of node */
+	cout << movieNode->data << endl;
+
+	/* now recur on right child */
+	printTree(movieNode->right);
 
 }
 

@@ -3,18 +3,31 @@
 #include <iostream>
 #include "Classic.h"
 #include "Drama.h"
+#include "MovieBST.h"
+
 using namespace std;
 
 int main() {
     Classic aClassic;
 
     Drama aDrama;
+    
+    Movie mov;
+
+    MovieBST movBST;
+
 
 
     aClassic.setReleaseDate("JULY2020");
     aClassic.getReleaseDate();
 
    Movie amovie;
+
+  
+
+  // movBST.printTree(movBST.root);
+
+
    amovie.setDirector("Steven");
    cout << amovie.getDirector() << endl;
 
@@ -30,6 +43,9 @@ int main() {
 
    amovie.setYear(2006);
    cout << amovie.getYear() << endl;
+
+   movBST.insert(amovie);
+   movBST.printTree(movBST.root);
 
 }
 

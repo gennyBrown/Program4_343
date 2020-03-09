@@ -101,3 +101,92 @@ using namespace std;
          return actor;
      }
 
+	 bool Movie::operator==(const Movie& movie) const
+	 {
+		 if (movie.director == director) {	//checks directors
+			 return true;
+		 }
+		 if (movie.title == title) {		//checks titles
+			 return true;
+		 }
+		 else {
+			 return false;
+		 }
+	 }
+
+	 bool Movie::operator!=(const Movie& movie) const
+	 {
+		 return !(operator==(movie));	//returns the opposite of ==
+	 }
+
+	 bool Movie::operator<(const Movie& movie) const
+	 {
+		 if (movie.director < director) {
+			 return true;
+		 }
+		 if (movie.title < title) {
+			 return true;
+		 }
+		 else {
+			 return false;
+		 }
+	 }
+
+	 bool Movie::operator>(const Movie& movie) const
+	 {
+		 if (movie.director > director) {
+			 return true;
+		 }
+		 if (movie.title > title) {
+			 return true;
+		 }
+		 else {
+			 return false;
+		 }
+	 }
+
+	 bool Movie::operator<=(const Movie& movie) const
+	 {
+		 if (movie.director <= director) {
+			 return true;
+		 }
+		 if (movie.title <= title) {
+			 return true;
+		 }
+		 else {
+			 return false;
+		 }
+	 }
+
+	 bool Movie::operator>=(const Movie& movie) const
+	 {
+		 if (movie.director >= director) {
+			 return true;
+		 }
+		 if (movie.title >= title) {
+			 return true;
+		 }
+		 else {
+			 return false;
+		 }
+	 }
+
+	 Movie& Movie::operator=(const Movie& movie)
+	 {
+		 if (this != &movie) {
+			 director = movie.director;
+			 title = movie.title;
+
+		 }
+		 return *this;
+	 }
+
+	 //-------------------------- operator<< --------------------------------------
+	 ostream& operator<<(ostream& output, Movie& nd) {
+		 output << nd.type << endl;
+		 output << nd.quantity << endl;
+		 output << nd.director << endl;
+		 output << nd.title << endl;
+		 output << nd.year << endl;
+		 return output;
+	 }
