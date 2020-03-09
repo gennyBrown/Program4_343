@@ -31,20 +31,20 @@ using namespace std;
      }	//destructor
 
     Movie::Movie(string mDirector, string mTitle, char mMovieType, int mQuantity, int mYear){
-        mDirector=director;
-        mTitle=title;
-        mMovieType=type;
-        mQuantity=quantity;
-        mYear = year;
+        director = mDirector;
+        title = mTitle;
+        type = mMovieType;
+        quantity = mQuantity;
+         year = mYear;
     }
 
     Movie::Movie(string mDirector, string mTitle, char mMovieType, int mQuantity, int mYear, string mActor ) {
-        mDirector = director;
-        mTitle = title;
-        mMovieType = type;
-        mQuantity = quantity;
-        mYear = year;
-        mActor = actor;
+       director = mDirector;
+       title = mTitle;
+       type = mMovieType;
+       quantity = mQuantity;
+	   year = mYear;
+	   actor = mActor;
         
 
     }
@@ -69,6 +69,7 @@ using namespace std;
 
 	 void Movie::setQuantity(int amount){
         quantity = amount;
+		coutQuantity = to_string(amount);
 
     }	//sets quantity
 
@@ -79,6 +80,7 @@ using namespace std;
 
 	 void Movie::setMovieType(char movieType){
         type = movieType;
+		coutType = to_string(movieType);
 
     }	//sets the movie type
 
@@ -88,6 +90,7 @@ using namespace std;
 
      void Movie::setYear(int releaseyear) { //sets movies year
          year = releaseyear;
+		 coutYear = to_string(releaseyear);
      }
 
      int Movie::getYear() { //returns movie year
@@ -95,7 +98,7 @@ using namespace std;
      }
 
      void Movie::setActor(string thisActor) {  //sets actor for classic movies
-         thisActor = actor;
+		 actor = thisActor;
      }
      string Movie::getActor() { //returns the actors
          return actor;
@@ -182,11 +185,12 @@ using namespace std;
 	 }
 
 	 //-------------------------- operator<< --------------------------------------
-	 ostream& operator<<(ostream& output, Movie& nd) {
-		 output << nd.type << endl;
-		 output << nd.quantity << endl;
-		 output << nd.director << endl;
-		 output << nd.title << endl;
-		 output << nd.year << endl;
+	 ostream& operator<<(ostream& output,const Movie nd) {
+	
+		 output << nd.coutType << ", "
+		 << nd.coutQuantity << ", "
+		 << nd.director << ", "
+		 << nd.title << ", "
+		 << nd.coutYear << endl;
 		 return output;
 	 }

@@ -23,15 +23,12 @@ int main() {
 
    Movie amovie;
 
-  
-
-  // movBST.printTree(movBST.root);
-
+   Movie anotherMovie("Genny", "MOVIE TITLE", 'F', 10, 1990);
 
    amovie.setDirector("Steven");
    cout << amovie.getDirector() << endl;
 
-
+   
    amovie.setTitle("Atitle");
    cout << amovie.getTitle() << endl;;
 
@@ -44,8 +41,15 @@ int main() {
    amovie.setYear(2006);
    cout << amovie.getYear() << endl;
 
+   amovie.setDirector("Mowgli");
    movBST.insert(amovie);
+   movBST.insert(anotherMovie);
    movBST.printTree(movBST.root);
+   
+
+   cout << amovie.coutQuantity << endl;
+
+   cout << amovie.getYear() << endl;
 
 }
 

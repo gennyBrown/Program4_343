@@ -19,6 +19,7 @@
 #ifndef MOVIE_H
 #define MOVIE_H
 
+//#include "MovieFactory.h"
 #include <string>
 
 using namespace std;
@@ -61,7 +62,7 @@ public:
 	//greater-than-or-equal- to operator overload	
 	bool operator>=(const Movie&) const;
 	Movie& operator=(const Movie&);	//assignment operator
-	friend ostream& operator<<(ostream& output, Movie& nd);
+	friend ostream& operator<<(ostream& output,const Movie nd);
 
 
 
@@ -71,5 +72,9 @@ public:
 	int quantity;		//holds the quantity of the movie
 	int year;		// hold year movie was released
 	string actor;  //holds the actor for classic movies
+
+	string coutType;
+	string coutQuantity;
+	string coutYear;
 };
 #endif

@@ -12,7 +12,7 @@ MovieBST::MovieBST()
 
 MovieBST::~MovieBST()
 {
-	//makeEmpty();		//calls recuresive helper
+	makeEmpty();		//calls recuresive helper
 }
 
 
@@ -22,7 +22,7 @@ void MovieBST::makeEmpty()
 	root = nullptr;		//sets root to null
 }
 
-void MovieBST::helpMakeEmpty(Node*&) //removes node
+void MovieBST::helpMakeEmpty(Node*& root) //removes node
 {
 	if (root) {		//checks for root
 		helpMakeEmpty(root->left);	//goes left

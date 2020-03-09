@@ -31,37 +31,37 @@ bool MovieFactory::storeMovie(ifstream& input)
 		input >> movieType;			//reads movie type
 		if (movieType == 'F') {		//if comedy
 			
-			getline(input, quantity, ',');	//reads inventory
+			getline(input, inventory, ',');	//reads inventory
 			getline(input, director, ',');	//reads director
 			getline(input, title, ',');	//reads title
-			getline(input, year, ',');	//reads release year
-			inventory = stoi(quantity);	//converts from string to int
-			releaseYear = stoi(year);	//converts from string to int
+			getline(input, releaseYear, ',');	//reads release year
+			quantity = stoi(inventory);	//converts from string to int
+			year = stoi(releaseYear);	//converts from string to int
 			
 			//makeMovie('F');		//creates the comedy object
 			return true;
 		}
 
 		else if (movieType == 'D') {	//if drama
-			getline(input, quantity, ',');	//reads inventory
+			getline(input, inventory, ',');	//reads inventory
 			getline(input, director, ',');	//reads director
 			getline(input, title, ',');	//reads title
-			getline(input, year, ',');	//reads release year
-			inventory = stoi(quantity);	//converts from string to int
-			releaseYear = stoi(year);	//converts from string to int
+			getline(input, releaseYear, ',');	//reads release year
+			quantity = stoi(inventory);	//converts from string to int
+			year = stoi(releaseYear);	//converts from string to int
 			
 			//makeMovie('D');	//creates the drama object
 			return true;
 		}
 
 		else if (movieType == 'C') {	//if classic
-			getline(input, quantity, ',');	//reads inventory
+			getline(input, inventory, ',');	//reads inventory
 			getline(input, director, ',');	//reads director
 			getline(input, title, ',');	//reads title
 			getline(input, actor, ',');	//reads actor name
-			getline(input, year, ',');	//reads release year
-			inventory = stoi(quantity);	//converts from string to int
-			releaseYear = stoi(year);	//converts from string to int
+			getline(input, releaseYear, ',');	//reads release year
+			quantity = stoi(inventory);	//converts from string to int
+			year = stoi(releaseYear);	//converts from string to int
 			
 			//makeMovie('C');		//creates the classic object
 			return true;
@@ -91,10 +91,10 @@ Movie* MovieFactory::makeMovie(char movieType)
 		Movie* comedy = new Comedy();	//creates new comedy oject
 		comedy->setDirector(director);	//sets director
 		comedy->setMovieType('F');	//sets movie type
-		comedy->setQuantity(10);	//sets quantity
+		comedy->setQuantity(quantity);	//sets quantity
 		comedy->setTitle(title);	//sets title
 		comedy->setActor(actor);	//sets actor
-		comedy->setYear(releaseYear);	//sets year
+		comedy->setYear(year);	//sets year
 		return comedy;
 			 
 	}
@@ -103,10 +103,10 @@ Movie* MovieFactory::makeMovie(char movieType)
 		Movie* drama = new Drama();		//creates new drama object
 		drama->setDirector(director);	//sets director
 		drama->setMovieType('D');	//sets movie type
-		drama->setQuantity(10);		//sets quantity
+		drama->setQuantity(quantity);		//sets quantity
 		drama->setTitle(title);		//sets title
 		drama->setActor(actor);		//sets actor
-		drama->setYear(releaseYear); //sets year
+		drama->setYear(year); //sets year
 		return drama;
 	}
 
@@ -115,9 +115,9 @@ Movie* MovieFactory::makeMovie(char movieType)
 		classic->setActor(actor);	//sets actor
 		classic->setDirector(director);	//sets director
 		classic->setMovieType('C');		//sets movie type
-		classic->setQuantity(10);	//sets quantity
+		classic->setQuantity(quantity);	//sets quantity
 		classic->setTitle(title);	//sets title
-		classic->setYear(releaseDate);	//sets release date
+		classic->setYear(year);	//sets release date
 		return classic;
 	}
 	else {	//if not F,D or C

@@ -21,7 +21,7 @@ bool DramaBST::insert(Drama& newData) {
 
 bool DramaBST::insert(Drama& newData)
 {
-	return helpInsert(this->root, &newData);;
+	return helpInsert(this->root, &newData);
 }
 
 // --------------------- insertHelper -----------------------------------------

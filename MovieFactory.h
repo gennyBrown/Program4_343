@@ -18,8 +18,8 @@ public:
 	Movie* makeMovie(char movieType);
 
 	char movieType;
-	int inventory, releaseYear, releaseDate;
-	string title, actor, director, quantity, year;
+	int releaseDate,quantity, year;
+	string title, actor, director, inventory, releaseYear;
 };
 
 #endif
