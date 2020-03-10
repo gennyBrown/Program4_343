@@ -4,29 +4,33 @@
 
 using namespace std;
 
-class MovieBST {
-
+class MovieBST : public Movie{
+	// create a .cpp for each type of movieBST with overloaded function for insert, the rest will be the same.
 public:
 	struct Node {
 		Movie* data;
 		Node* left;
 		Node* right;
 	};
+	//allows for using Node instead of sruct Node
+	using Node = struct Node;
+
 	MovieBST();
-	~MovieBST();
+	virtual ~MovieBST();
 	void makeEmpty();	//clears the tree
-	bool insert(Movie*);	//adds new nodes to the tree
+	bool insert(Movie&);
+	//bool helpInsert(Node*& thisNode, Movie newData);
+	bool helpInsert(Node*&, Movie*);
+	//adds new nodes to the tree
 	bool retrieve(const Movie&, Movie*&) const;	 	//gets given node
+	//void printTree()const;
 	void printTree(Node*&) const;
 
-private:
-
+	
 	Node* root;
 
 	void makeEmpty(Node*&);	//makeEmpty helper
-	bool insertComedy(Node*&, Movie*);	//inserts new Comedy into tree
-	bool insertDrama(Node*&, Movie*);	//inserts new Drama into tree
-	bool insertClassic(Node*&, Movie*);	//inserts new Classic into tree
+	//bool insert(Movie newData);
 	void retrieve(Node*, const Movie&, Movie*&) const;	//retrieve helper
 };
 
