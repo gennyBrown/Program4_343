@@ -1,5 +1,9 @@
 #include <iostream>
 #include "MovieBST.h"
+#include "DramaBST.h"
+#include "ClassicBST.h"
+#include "ComedyBST.h"
+
 
 
 MovieBST::MovieBST()
@@ -72,12 +76,6 @@ bool MovieBST::helpInsert(Node*& thisNode, Movie *newData) {
 	return true;    //Node inserted successfully
 }
 
-
-bool MovieBST::retrieve(const Movie&, Movie*&) const
-{
-	return true;
-}
-
 void MovieBST::printTree()
 {
 	printTree(*&root);
@@ -100,7 +98,51 @@ void MovieBST::printTree(Node*& movieNode)
 	}
 }
 
-void MovieBST::retrieve(Node*, const Movie&, Movie*&) const 
+Movie* MovieBST::retrieve(Movie& pd)
 {
-
+	Movie* nd;
+	//check if tree is empty
+	if (root == nullptr) {
+		cout << &(pd) << endl;
+		return &(pd);
+	}
+	//check value in root
+	if (*(root->data) == pd) {
+		nd = root->data;
+		cout << *(nd) << endl;
+		return nd;
+	}
+	//create new node pointer with retrun value of contains
+	Node* newNode = contains(root, pd);
+	//check contains != nullptr
+	if (newNode == nullptr) {
+		cout << "nullptr" << endl;
+		return nullptr;
+	}
+	//assign pointer
+	nd = newNode->data;
+	cout << *(nd) << endl;
+	return nd;
 }
+MovieBST::Node* MovieBST::contains(Node* curr, const Movie& pd) const
+{
+	//check curr for nullptr
+	if (curr == nullptr) {
+		return nullptr;
+	}
+	//check curr->data
+	if (*(curr->data) == pd) {
+		return curr;
+	}
+	//check size of pd, if larger traverse right
+	else if (pd > * (curr->data)) {
+		return contains(curr->right, pd);
+	}
+	//check size of pd, if smaller traverse left
+	else if (pd < *(curr->data)) {
+		return contains(curr->left, pd);
+	}
+	return curr;
+}
+//end retrieve(const NodeData& pd, NodeData*& nd)
+

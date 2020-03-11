@@ -23,6 +23,10 @@ public:
 	bool helpInsert(Node*& thisNode, Drama* newData);
 	void printTree();
 	void printTree(Node*& movieNode);
+
+	Drama* retrieve(Drama& pd);
+
+	DramaBST::Node* contains(Node* curr, const Drama& pd) const;
 	
 
 	Node* root;

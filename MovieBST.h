@@ -22,16 +22,20 @@ public:
 	//bool helpInsert(Node*& thisNode, Movie newData);
 	bool helpInsert(Node*&, Movie*);
 	//adds new nodes to the tree
-	bool retrieve(const Movie&, Movie*&) const;	 	//gets given node
+	//bool retrieve(const Movie&) const;	 	//gets given node
 	void printTree();
 	void printTree(Node*&);
+
+	Movie* retrieve(Movie& pd);
+
+	Node* contains(Node* curr, const Movie& pd) const;
 
 	
 	Node* root;
 
 	void makeEmpty(Node*&);	//makeEmpty helper
 	//bool insert(Movie newData);
-	void retrieve(Node*, const Movie&, Movie*&) const;	//retrieve helper
+	//void retrieve(Node*, const Movie&, Movie*&) const;	//retrieve helper
 };
 
 #endif // !MOVIE_BST_H
