@@ -2,13 +2,12 @@
 #define DRAMA_H
 //#ifdef DRAMA_H
 #include "Movie.h"
+#include <string>
 
 using namespace std;
 
-//class Movie {};
-
-class Drama:public Movie{
-
+class Drama :public Movie {
+	friend ostream& operator<<(ostream& output, Drama& nd);
 public:
 	Drama();		//default constructor
 	//constructor with parameters for use in the factory
@@ -20,9 +19,19 @@ public:
 
 	virtual char getMovieType();	//returns the type of the movie
 
-protected:
 	int year;		//stores the release year of the movie
+
+	bool operator==(const Drama&) const;	//equal operator overload
+	bool operator!=(const Drama&) const;	//not equal operator overload
+	bool operator<(const Drama&) const;	//less-than operator overload
+	bool operator>(const Drama&) const;	//greater-than operator overload
+//less-than-or-equal- to operator overload
+	bool operator<=(const Drama&) const;
+	//greater-than-or-equal- to operator overload	
+	bool operator>=(const Drama&) const;
+	Drama& operator=(const Drama&);	//assignment operator
 };
 
 
-#endif // DRAMA_
+#endif // DRAMA_H
+
