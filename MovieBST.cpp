@@ -72,7 +72,6 @@ bool MovieBST::helpInsert(Node*& thisNode, Movie *newData) {
 	{
 		return false;   // Node Data already exists
 	}
-
 	return true;    //Node inserted successfully
 }
 
