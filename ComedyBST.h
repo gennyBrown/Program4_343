@@ -23,6 +23,10 @@ public:
 	void printTree();
 	void printTree(Node*& movieNode);
 
+	Comedy* retrieve(Comedy& pd);
+
+	ComedyBST::Node* contains(Node* curr, const Comedy& pd) const;
+
 
 	Node* root;
 };

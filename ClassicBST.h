@@ -23,6 +23,10 @@ public:
 	void printTree();
 	void printTree(Node*& movieNode);
 
+	Classic* retrieve(Classic& pd);
+
+	ClassicBST::Node* contains(Node* curr, const Classic& pd) const;
+
 
 	Node* root;
 };
