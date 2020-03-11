@@ -54,7 +54,6 @@ bool MovieBST::helpInsert(Node*& thisNode, Movie *newData) {
 		thisNode->right = NULL;
 		cout << "New node created" << endl;
 		cout << *(thisNode->data) << endl;
-		cout << newData->coutQuantity << endl;
 	}
 
 	else if (newData < thisNode->data)
@@ -78,14 +77,14 @@ bool MovieBST::retrieve(const Movie&, Movie*&) const
 {
 	return true;
 }
-/*
-void MovieBST::printTree() const
-{
-	printTree(root);
-}
-*/
 
-void MovieBST::printTree(Node*& movieNode) const
+void MovieBST::printTree()
+{
+	printTree(*&root);
+}
+
+
+void MovieBST::printTree(Node*& movieNode)
 {
 	if (movieNode == NULL)
 		return;
@@ -95,14 +94,13 @@ void MovieBST::printTree(Node*& movieNode) const
 
 		/* then print the data of node */
 		cout << *(movieNode->data) << endl;
-
+		
 		/* now recur on right child */
 		printTree(movieNode->right);
 	}
-	
 }
 
 void MovieBST::retrieve(Node*, const Movie&, Movie*&) const 
 {
 
-};
+}

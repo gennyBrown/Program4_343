@@ -2,11 +2,12 @@
 #define DRAMA_BST_H
 #include "MovieBST.h"
 #include "Drama.h"
+#include "Movie.h"
 
 using namespace std;
 
 class DramaBST : public MovieBST {
-	// create a .cpp for each type of movieBST with overloaded function for insert, the rest will be the same.
+
 public:
 	struct Node {
 		Drama* data;
@@ -18,16 +19,12 @@ public:
 
 	DramaBST();
 	~DramaBST();
-	void makeEmpty();	//clears the tree
-	bool insert(Drama*);	//adds new nodes to the tree
-	bool retrieve(const Drama&, Drama*&) const;	 	//gets given node
-	void printTree(Node*&) const;
-
-private:
+	bool insert(Drama& newData);
+	bool helpInsert(Node*& thisNode, Drama* newData);
+	void printTree();
+	void printTree(Node*& movieNode);
+	
 
 	Node* root;
-
-	void makeEmpty(Node*);	//makeEmpty helper
-	void retrieve(Node*, const Drama&, Drama*&) const;	//retrieve helper
 };
 #endif	//DRAMA_BST_H

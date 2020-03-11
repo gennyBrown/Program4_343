@@ -23,8 +23,8 @@ public:
 	bool helpInsert(Node*&, Movie*);
 	//adds new nodes to the tree
 	bool retrieve(const Movie&, Movie*&) const;	 	//gets given node
-	//void printTree()const;
-	void printTree(Node*&) const;
+	void printTree();
+	void printTree(Node*&);
 
 	
 	Node* root;

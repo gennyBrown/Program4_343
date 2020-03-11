@@ -11,15 +11,15 @@ using namespace std;
 
 class MovieFactory {
 public:
-//	MovieFactory();
-//	virtual ~MovieFactory();
-
+	//	MovieFactory();
+	//	virtual ~MovieFactory();
+	void readFile();
 	bool storeMovie(ifstream& input);
 	Movie* makeMovie(char movieType);
 
 	char movieType;
-	int inventory, releaseYear, releaseDate;
-	string title, actor, director, quantity, year;
+	int releaseDate, quantity, year;
+	string title, actor, director, inventory, releaseYear;
 };
 
 #endif

@@ -1,20 +1,18 @@
-#ifndef CLASSSIC_H
+#ifndef CLASSIC_H
 #define CLASSIC_H
-//#ifdef CLASSIC_H
 #include "Movie.h"
+#include <string>
 
 using namespace std;
 
-//class Movie{};
 
-
-class Classic:public Movie {
-
+class Classic : public Movie {
+	friend ostream& operator<<(ostream& output, Classic& nd);
 public:
 	Classic();	//default constructor 
 	//constructor with parameters for use in the factory
 	Classic(char type, int quantity, string director, string title,
-		string actor,string releaseDate);
+		string actor, string releaseDate);
 	virtual ~Classic();		//destructor
 
 		//sets the release date of the movie
@@ -25,10 +23,18 @@ public:
 	virtual string getActor();	//returns the actor of the movie
 	virtual char getMovieType();	//returns the movie type
 
-protected:
 	string releaseDate;		//stores the release date of the movie
 	string actor;		//stores actor name
+
+	bool operator==(const Classic&) const;	//equal operator overload
+	bool operator!=(const Classic&) const;	//not equal operator overload
+	bool operator<(const Classic&) const;	//less-than operator overload
+	bool operator>(const Classic&) const;	//greater-than operator overload
+//less-than-or-equal- to operator overload
+	bool operator<=(const Classic&) const;
+	//greater-than-or-equal- to operator overload	
+	bool operator>=(const Classic&) const;
+	Classic& operator=(const Classic&);	//assignment operator
 };
-
-
 #endif // CLASSIC_H
+

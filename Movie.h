@@ -52,12 +52,28 @@ public:
 	virtual int getYear(); // returns year
 
 
-protected:
+	bool operator==(const Movie&) const;	//equal operator overload
+	bool operator!=(const Movie&) const;	//not equal operator overload
+	bool operator<(const Movie&) const;	//less-than operator overload
+	bool operator>(const Movie&) const;	//greater-than operator overload
+	//less-than-or-equal- to operator overload
+	bool operator<=(const Movie&) const;
+	//greater-than-or-equal- to operator overload	
+	bool operator>=(const Movie&) const;
+	Movie& operator=(const Movie&);	//assignment operator
+	friend ostream& operator<<(ostream& output, Movie& nd);
+
+
+
 	string director;	//holds the movie director
 	string title;		//holds the movie title
 	char type;		//holds the movie type
 	int quantity;		//holds the quantity of the movie
 	int year;		// hold year movie was released
 	string actor;  //holds the actor for classic movies
+
+	string coutType;
+	string coutQuantity;
+	string coutYear;
 };
 #endif

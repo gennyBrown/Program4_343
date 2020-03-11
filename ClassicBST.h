@@ -2,11 +2,11 @@
 #define CLASSIC_BST_H
 #include "MovieBST.h"
 #include "Drama.h"
+#include "Classic.h"
 
 using namespace std;
 
 class ClassicBST : public MovieBST {
-	// create a .cpp for each type of movieBST with overloaded function for insert, the rest will be the same.
 public:
 	struct Node {
 		Classic* data;
@@ -18,16 +18,12 @@ public:
 
 	ClassicBST();
 	~ClassicBST();
-	void makeEmpty();	//clears the tree
-	bool insert(Classic*);	//adds new nodes to the tree
-	bool retrieve(const Classic&, Classic*&) const;	 	//gets given node
-	void printTree(Node*&) const;
+	bool insert(Classic& newData);
+	bool helpInsert(Node*& thisNode, Classic* newData);
+	void printTree();
+	void printTree(Node*& movieNode);
 
-private:
 
 	Node* root;
-
-	void makeEmpty(Node*);	//makeEmpty helper
-	void retrieve(Node*, const Classic&, Classic*&) const;	//retrieve helper
 };
 #endif	//CLASSSIC_BST_H#endif	//CLASSSIC_BST_H

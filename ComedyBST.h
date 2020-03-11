@@ -6,7 +6,7 @@
 using namespace std;
 
 class ComedyBST : public MovieBST {
-	// create a .cpp for each type of movieBST with overloaded function for insert, the rest will be the same.
+
 public:
 	struct Node {
 		Comedy* data;
@@ -18,16 +18,12 @@ public:
 
 	ComedyBST();
 	~ComedyBST();
-	void makeEmpty();	//clears the tree
-	bool insert(Comedy*);	//adds new nodes to the tree
-	bool retrieve(const Comedy&, Comedy*&) const;	 	//gets given node
-	void printTree(Node*&) const;
+	bool insert(Comedy& newData);
+	bool helpInsert(Node*& thisNode, Comedy* newData);
+	void printTree();
+	void printTree(Node*& movieNode);
 
-private:
 
 	Node* root;
-
-	void makeEmpty(Node*);	//makeEmpty helper
-	void retrieve(Node*, const Comedy&, Comedy*&) const;	//retrieve helper
 };
 #endif	//COMEDY_BST_H

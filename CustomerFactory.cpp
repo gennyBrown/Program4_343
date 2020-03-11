@@ -4,15 +4,14 @@
 #include <iostream>
 
 
-CustomerFactory::CustomerFactory()
-{
-	accountNumber = 0;
-	firstName = "";
-	lastName = "";
-}
+CustomerFactory::CustomerFactory(){}
 
-CustomerFactory::~CustomerFactory()
+CustomerFactory::~CustomerFactory(){}
+
+void CustomerFactory::readFile()
 {
+	ifstream input("data4customers.txt");
+	storeCustomer(input);
 }
 
 void CustomerFactory::storeCustomer(ifstream& input)
@@ -28,4 +27,5 @@ void CustomerFactory::storeCustomer(ifstream& input)
 			cout << "Incorrect input formatting" << endl;
 		}
 	}//end while loop
+	input.close();
 }
