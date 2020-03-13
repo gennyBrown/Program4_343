@@ -41,7 +41,6 @@ public:
 	virtual int getQuantity();	//returns quantity
 
 	virtual void setMovieType(char type);	//sets the movie type
-
 	virtual char getMovieType() const;	//virtual function to return movie type, removed = 0
 
 	virtual void setActor(string actor); //sets actor for classic movies
@@ -51,6 +50,11 @@ public:
 	virtual void setYear(int year); //set year
 	virtual int getYear(); // returns year
 
+	virtual void setReleaseMonth(int releaseMonth);
+	virtual int getReleaseMonth();
+
+	virtual void setReleaseYear(int releaseYear);
+	virtual int getReleaseYear();
 
 	bool operator==(const Movie&) const;	//equal operator overload
 	bool operator!=(const Movie&) const;	//not equal operator overload

@@ -6,6 +6,7 @@
 #include "Comedy.h"
 #include "Classic.h"
 #include "Drama.h"
+#include "ComedyBST.h"
 using namespace std;
 
 
@@ -18,8 +19,10 @@ public:
 	Movie* makeMovie(char movieType);
 
 	char movieType;
-	int releaseDate, quantity, year;
-	string title, actor, director, inventory, releaseYear;
+	int releaseDate, quantity, year, releaseMonth, ryear, classicReleaseMonth, classicReleaseYear;
+	string title, actor, director, inventory, releaseYear, cActorFname, 
+		cActorLname, releaseMonthS, releaseYearS;
+	ComedyBST comedyBST;
 };
 
 #endif
