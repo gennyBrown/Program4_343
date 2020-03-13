@@ -15,6 +15,7 @@
 #include <string>
 #include "Movie.h"
 #include "MovieFactory.h"
+#include "TransactionFactory.h"
 
 void MovieFactory::readFile()
 {
@@ -44,8 +45,9 @@ bool MovieFactory::storeMovie(ifstream& input)
 			getline(input, releaseYear, ',');	//reads release year
 			quantity = stoi(inventory);	//converts from string to int
 			year = stoi(releaseYear);	//converts from string to int
-
-			makeMovie('F');		//creates the comedy object
+			//Movie *comedy = new Comedy;
+			makeMovie('F');
+			//comedyBST.insert(comedy);		//creates the comedy object
 			return true;
 		}
 		else if (movieType == 'D') {	//if drama
@@ -60,16 +62,54 @@ bool MovieFactory::storeMovie(ifstream& input)
 			return true;
 		}
 		else if (movieType == 'C') {	//if classic
+			getline(input, inventory, ',');
+			getline(input, director, ',');
+			getline(input, title, ',');
+			getline(input, cActorFname, ' ');
+			getline(input, cActorLname, ' ');
+			getline(input, releaseMonthS, ' ');
+			getline(input, releaseYearS, ' ');		
+			quantity = stoi(inventory);
+			releaseMonth = stoi(releaseMonthS);
+			releaseYear = stoi(releaseYear);
+			actor = cActorFname + " " + cActorLname;
+			cout << "reading classic, call make " << endl;
+			makeMovie('C');
+		//	try {
+				
+		//	}
+		//	catch(invalid_argument){}
+			return true;
+
+			/*
 			getline(input, inventory, ',');	//reads inventory
 			getline(input, director, ',');	//reads director
 			getline(input, title, ',');	//reads title
-			getline(input, actor, ',');	//reads actor name
+
+			getline(input, cActorFname, ' ');    //reads actor Fname
+			getline(input, cActorLname, ' ');  //read actor Lname
+			getline(input, classicReleaseMonthS, ' ');    //reads release year
+			getline(input, classicReleaseYearS, ' ');
+			quantity = stoi(inventory);    //converts from string to int
+			classicReleaseMonth = stoi(classicReleaseMonthS);    //converts from string to int
+			classicReleaseYear = stoi(classicReleaseYearS);
+			actor = cActorFname + " " + cActorLname;
+			
+			cout << "making classic from file" << endl;
+			getline(input, actor, ' ');	//reads actor name
 			getline(input, releaseYear, ',');	//reads release year
+			
 			quantity = stoi(inventory);	//converts from string to int
 			year = stoi(releaseYear);	//converts from string to int
-
+			cout << "release Month " << releaseMonth << endl;
 			makeMovie('C');		//creates the classic object
 			return true;
+
+
+			/*classicBST.insert(*(makeMovie('C')));        //creates the classic object
+			return true;*/
+
+
 		}
 		else {	//if incorrect formatting
 			cout << "Incorrect input formatting" << endl;
@@ -92,7 +132,7 @@ bool MovieFactory::storeMovie(ifstream& input)
 Movie* MovieFactory::makeMovie(char movieType)
 {
 	if (movieType == 'F') {	//if comedy
-		Movie* comedy = new Comedy();	//creates new comedy oject
+		Movie *comedy = new Comedy();	//creates new comedy oject
 		comedy->setDirector(director);	//sets director
 		comedy->setMovieType('F');	//sets movie type
 		comedy->setQuantity(quantity);	//sets quantity
@@ -113,13 +153,15 @@ Movie* MovieFactory::makeMovie(char movieType)
 		return drama;
 	}
 	else if (movieType == 'C') {	//if classic
+		cout << "making classic" << endl;
 		Movie* classic = new Classic();	//creates classic object
 		classic->setActor(actor);	//sets actor
 		classic->setDirector(director);	//sets director
 		classic->setMovieType('C');		//sets movie type
 		classic->setQuantity(quantity);	//sets quantity
 		classic->setTitle(title);	//sets title
-		classic->setYear(releaseDate);	//sets release date
+		classic->setReleaseMonth(releaseMonth);	//sets release date
+		classic->setReleaseYear(year);
 		return classic;
 	}
 	else {	//if not F,D or C

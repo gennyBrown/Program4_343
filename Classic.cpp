@@ -7,23 +7,33 @@ Classic::Classic() {
 
 //constructor with parameters for use in the factory
 Classic::Classic(char thisType, int thisQuantity, string thisDirector, string thisTitle,
-	string thisActor, string thisReleaseDate) {
+	string thisActor, int thisReleaseMonth, int thisReleaseYear) {
 	type = thisType;
 	quantity = thisQuantity;
 	director = thisDirector;
 	title = thisTitle;
 	actor = thisActor;
-	releaseDate = thisReleaseDate;
+	releaseMonth = thisReleaseMonth;
+	releaseYear = thisReleaseYear;
 }
 Classic::~Classic() {}		//destructor
 
 //sets the release date of the movie
-void Classic::setReleaseDate(string thisReleaseDate) {
-	releaseDate = thisReleaseDate;
+void Classic::setReleaseMonth(int thisReleaseMonth) {
+	releaseMonth = thisReleaseMonth;
 }
-string Classic::getReleaseDate() //returns the release date of the movie
+int Classic::getReleaseMonth() //returns the release date of the movie
 {
-	return releaseDate;
+	return releaseMonth;
+}
+
+void Classic::setReleaseYear(int thisReleaseYear) {
+	releaseYear = thisReleaseYear;
+}
+
+int Classic::getReleaseYear() //returns the release date of the movie
+{
+	return releaseYear;
 }
 
 void Classic::setActor(string thisName) //sets the actor of the movie
@@ -43,9 +53,14 @@ char Classic::getMovieType()	//returns the movie type
 
 bool Classic::operator==(const Classic& classic) const
 {
-	if (this->releaseDate == classic.releaseDate) {	//checks release date
+	if (this->releaseYear == classic.releaseYear) {	//checks release date
 		return true;
 	}
+
+	if (this->releaseMonth == classic.releaseMonth) {
+		return true;
+	}
+
 	if (this->actor == classic.actor) {		//checks Acotr
 		return true;
 	}
@@ -61,9 +76,14 @@ bool Classic::operator!=(const Classic& classic) const
 
 bool Classic::operator<(const Classic& classic) const
 {
-	if (this->releaseDate < classic.releaseDate) {	//compares release date
+	if (this->releaseMonth < classic.releaseMonth) {	//compares release date
 		return true;
 	}
+
+	if (this->releaseYear < classic.releaseYear) {	//compares release date
+		return true;
+	}
+
 	if (this->actor < classic.actor) {	//compares actor
 		return true;
 	}
@@ -74,7 +94,11 @@ bool Classic::operator<(const Classic& classic) const
 
 bool Classic::operator>(const Classic& classic) const
 {
-	if (this->releaseDate > classic.releaseDate) {	//compare release dates
+	if (this->releaseMonth > classic.releaseMonth) {	//compare release dates
+		return true;
+	}
+
+	if (this->releaseYear > classic.releaseYear) {	//compare release dates
 		return true;
 	}
 	if (this->actor > classic.actor) {	 //compare actors
@@ -87,7 +111,10 @@ bool Classic::operator>(const Classic& classic) const
 
 bool Classic::operator<=(const Classic& classic) const
 {
-	if (this->releaseDate <= classic.releaseDate) {	//compare release dates
+	if (this->releaseMonth <= classic.releaseMonth) {	//compare release dates
+		return true;
+	}
+	if (this->releaseYear <= classic.releaseYear) {	//compare release dates
 		return true;
 	}
 	if (this->actor <= classic.actor) {	//compare actor
@@ -100,9 +127,14 @@ bool Classic::operator<=(const Classic& classic) const
 
 bool Classic::operator>=(const Classic& classic) const
 {
-	if (this->releaseDate >= classic.releaseDate) {	//compare release dates
+	if (this->releaseMonth >= classic.releaseMonth) {	//compare release dates
 		return true;
 	}
+
+	if (this->releaseYear >= classic.releaseYear) {	//compare release dates
+		return true;
+	}
+
 	if (this->actor >= classic.actor) {	//compare actor
 		return true;
 	}
@@ -116,9 +148,11 @@ Classic& Classic::operator=(const Classic& classic)
 	if (*this != classic) {
 		this->director = classic.director;
 		this->title = classic.title;
-		this->releaseDate = classic.releaseDate;
+		this->releaseMonth = classic.releaseMonth;
+		this->releaseYear = classic.releaseYear;
 		this->quantity = classic.quantity;
 		this->type = classic.type;
+		this->actor = actor;
 	}
 	return *this;
 }
@@ -126,6 +160,6 @@ Classic& Classic::operator=(const Classic& classic)
 //-------------------------- operator<< --------------------------------------
 ostream& operator<<(ostream& output, Classic& nd) {
 	output << nd.type << ", " << nd.quantity << ", " <<
-		nd.director << ", " << nd.title << ", " << nd.releaseDate << endl;
+		nd.director << ", " << nd.title << ", " << nd.releaseMonth << " "<<nd.releaseYear << " " << nd.actor << endl;
 	return output;
 }
