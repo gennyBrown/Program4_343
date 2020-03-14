@@ -1,4 +1,4 @@
-/// ------------------------------------------------ Movie.cpp -------------------------------------------------------
+/// ------------------------------------------------ Movie.cpp ----------------
 
 // Steven Bollman CSS 343 C
 
@@ -6,13 +6,14 @@
 
 // Date of Last Modification - 3/3/2020
 
-// --------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 
-// Purpose - This program provides constructors, destructors, getters and setters for the movie class. The getters and setters procvided
-// for the director, title, quantity, movietype, and year
-// --------------------------------------------------------------------------------------------------------------------
+// Purpose - This program provides constructors, destructors, getters and 
+// setters for the movie class. The getters and setters provided for the 
+// director, title, quantity, movietype, and year
+// ----------------------------------------------------------------------------
 
-// --------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 
 
 
@@ -69,10 +70,6 @@ string Movie::getTitle() {
 
 void Movie::setQuantity(int amount) {
 	quantity = amount;
-	ostringstream ss;
-	ss << amount;
-	coutQuantity = ss.str();
-
 }	//sets quantity
 
 int Movie::getQuantity() {
@@ -95,6 +92,24 @@ void Movie::setYear(int releaseyear) { //sets movies year
 
 int Movie::getYear() { //returns movie year
 	return year;
+}
+
+void Movie::setReleaseMonth(int releaseMonth)
+{
+}
+
+int Movie::getReleaseMonth()
+{
+	return 0;
+}
+
+void Movie::setReleaseYear(int releaseYear)
+{
+}
+
+int Movie::getReleaseYear()
+{
+	return 0;
 }
 
 void Movie::setActor(string thisActor) {  //sets actor for classic movies
