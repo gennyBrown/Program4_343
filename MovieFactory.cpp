@@ -1,10 +1,10 @@
 // ---------------------------------- MovieFactory.cpp -----------------------
 
-// Genny Brown CSS 343
+// Steven Bollman & Genny Brown CSS 343
 
-// 03/02/2020
+// Date of Last Modification: 03/14/2020
 
-// 02/15/2020
+// Creation Date: 02/15/2020
 
 // ----------------------------------------------------------------------------
 
@@ -15,6 +15,7 @@
 #include <string>
 #include "Movie.h"
 #include "MovieFactory.h"
+#include "TransactionFactory.h"
 
 void MovieFactory::readFile()
 {
@@ -25,15 +26,18 @@ void MovieFactory::readFile()
 // ----------------------storeMovie(ifstream& input)-----------------------
 //
 // Description
-//	reads from the file and calls the helper function to create the movie objects
+//	reads from the file and calls the helper function to create 
+// the movie objects
 //
 // preconditions: there is a valid file to be read from
 // 
-// postconditions: helper function is called and the variables for the oject are 
-// initalized
+// postconditions: helper function is called and the variables for 
+// the oject are initalized
 // ---------------------------------------------------------------------------
 bool MovieFactory::storeMovie(ifstream& input)
 {
+
+
 	while (!input.eof()) {	//checks to see if at end of file
 		input >> movieType;			//reads movie type
 		if (movieType == 'F') {		//if comedy
@@ -44,8 +48,9 @@ bool MovieFactory::storeMovie(ifstream& input)
 			getline(input, releaseYear, ',');	//reads release year
 			quantity = stoi(inventory);	//converts from string to int
 			year = stoi(releaseYear);	//converts from string to int
-
-			makeMovie('F');		//creates the comedy object
+			//Movie *comedy = new Comedy;
+			comedyBST.insert(*makeComedyMovie());
+			//comedyBST.insert(comedy);		//creates the comedy object
 			return true;
 		}
 		else if (movieType == 'D') {	//if drama
@@ -56,19 +61,25 @@ bool MovieFactory::storeMovie(ifstream& input)
 			quantity = stoi(inventory);	//converts from string to int
 			year = stoi(releaseYear);	//converts from string to int
 
-			makeMovie('D');	//creates the drama object
+			dramaBST.insert(*(makeDramaMovie()));	//creates the drama object
 			return true;
 		}
 		else if (movieType == 'C') {	//if classic
-			getline(input, inventory, ',');	//reads inventory
-			getline(input, director, ',');	//reads director
-			getline(input, title, ',');	//reads title
-			getline(input, actor, ',');	//reads actor name
-			getline(input, releaseYear, ',');	//reads release year
-			quantity = stoi(inventory);	//converts from string to int
-			year = stoi(releaseYear);	//converts from string to int
+			input.ignore();
+			getline(input, inventory, ',');
+			stringstream ss;
+			ss << inventory;
+			ss >> quantity;
 
-			makeMovie('C');		//creates the classic object
+			getline(input, director, ',');
+			getline(input, title, ',');
+			input >> cActorFname;
+			input >> cActorLname;
+			input >> releaseMonth;
+			input >> releaseYear;
+			actor = cActorFname + " " + cActorLname;
+
+			classicBST.insert(*(makeClassicMovie()));
 			return true;
 		}
 		else {	//if incorrect formatting
@@ -89,41 +100,54 @@ bool MovieFactory::storeMovie(ifstream& input)
 // 
 // postconditions: movie objects are created with variables initalized
 // ---------------------------------------------------------------------------
-Movie* MovieFactory::makeMovie(char movieType)
+Classic* MovieFactory::makeClassicMovie()
 {
-	if (movieType == 'F') {	//if comedy
-		Movie* comedy = new Comedy();	//creates new comedy oject
-		comedy->setDirector(director);	//sets director
-		comedy->setMovieType('F');	//sets movie type
-		comedy->setQuantity(quantity);	//sets quantity
-		comedy->setTitle(title);	//sets title
-		comedy->setActor(actor);	//sets actor
-		comedy->setYear(year);	//sets year
-		return comedy;
-
-	}
-	else if (movieType == 'D') {	//if drama
-		Movie* drama = new Drama();		//creates new drama object
-		drama->setDirector(director);	//sets director
-		drama->setMovieType('D');	//sets movie type
-		drama->setQuantity(quantity);		//sets quantity
-		drama->setTitle(title);		//sets title
-		drama->setActor(actor);		//sets actor
-		drama->setYear(year); //sets year
-		return drama;
-	}
-	else if (movieType == 'C') {	//if classic
-		Movie* classic = new Classic();	//creates classic object
-		classic->setActor(actor);	//sets actor
-		classic->setDirector(director);	//sets director
-		classic->setMovieType('C');		//sets movie type
-		classic->setQuantity(quantity);	//sets quantity
-		classic->setTitle(title);	//sets title
-		classic->setYear(releaseDate);	//sets release date
-		return classic;
-	}
-	else {	//if not F,D or C
-		cout << "invalid movie type" << endl;
-	}
+	//cout << "making classic" << endl;
+	Classic* classic = new Classic();	//creates classic object
+	classic->setActor(actor);	//sets actor
+	classic->setDirector(director);	//sets director
+	classic->setMovieType('C');		//sets movie type
+	classic->setQuantity(quantity);	//sets quantity
+	classic->setTitle(title);	//sets title
+	classic->setReleaseMonth(releaseMonth);	//sets release date
+	classic->setReleaseYear(year);
+	return classic;
 }
-//end makeMovie(char movieType)
+
+
+Comedy* MovieFactory::makeComedyMovie() {
+
+	Comedy* comedy = new Comedy();	//creates new comedy oject
+	comedy->setDirector(director);	//sets director
+	comedy->setMovieType('F');	//sets movie type
+	comedy->setQuantity(quantity);	//sets quantity
+	comedy->setTitle(title);	//sets title
+	comedy->setActor(actor);	//sets actor
+	comedy->setYear(year);	//sets year
+	return comedy;
+}
+
+Drama* MovieFactory::makeDramaMovie() {
+
+	Drama* drama = new Drama();		//creates new drama object
+	drama->setDirector(director);	//sets director
+	drama->setMovieType('D');	//sets movie type
+	drama->setQuantity(quantity);		//sets quantity
+	drama->setTitle(title);		//sets title
+	drama->setActor(actor);		//sets actor
+	drama->setYear(year); //sets year
+	return drama;
+
+}
+
+ClassicBST MovieFactory::getClassicBST() { // returns classicBST
+	return classicBST;
+}
+
+DramaBST MovieFactory::getDramaBST() { //returns dramaBST
+	return dramaBST;
+}
+
+ComedyBST MovieFactory::getComedyBST() { //returns comedyBST
+	return comedyBST;
+}
